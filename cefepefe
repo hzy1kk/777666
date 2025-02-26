@@ -1,0 +1,37 @@
+def obter_estado_por_digito(digito):
+    estados = {
+        '0': 'Distrito Federal',
+        '1': 'São Paulo',
+        '2': 'São Paulo',
+        '3': 'Minas Gerais',
+        '4': 'Rio de Janeiro',
+        '5': 'Espírito Santo',
+        '6': 'Bahia',
+        '7': 'Sergipe',
+        '8': 'São Paulo',
+        '9': 'Paraná'
+    }
+    return estados.get(digito, 'Estado desconhecido')
+
+def main():
+    cpf_input = input("Digite o número do CPF (com ou sem pontuação): ")
+    
+    # Remover caracteres não numéricos
+    cpf = ''.join(filter(str.isdigit, cpf_input))
+    
+    # Verificar se o CPF tem exatamente 11 dígitos
+    if len(cpf) != 11:
+        print('CPF INVÁLIDO')
+        return
+    
+    # Obter o penúltimo dígito (o que indica o estado)
+    digito_estado = cpf[-2]
+    
+    # Obter o estado correspondente
+    estado = obter_estado_por_digito(digito_estado)
+    
+    # Exibir a mensagem informando o estado
+    print(f'O CPF informado é do estado: {estado}')
+
+if __name__ == "__main__":
+    main()
